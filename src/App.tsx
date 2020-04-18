@@ -1,24 +1,25 @@
-import React, { StrictMode, memo, FC, useEffect } from 'react'
-import { css } from '@emotion/core'
-import router  from '@/router'
-import { setTitle } from '@/utils'
-
-const wrap = css({
-  background: 'pink'
-})
+import React, { StrictMode, memo, FC } from 'react'
+import { HashRouter as Router, Route } from "react-router-dom";
+import { Provider } from 'react-redux'
+import store from './store'
+import Desktop from './containers/Desktop'
+import { SnackbarProvider } from 'notistack'
+import NavigationBar from './components/NavigationBar'
 
 const App: FC = () => {
-  useEffect(() => {
-    setTitle('React Demo')
-  }, [])
+  return <StrictMode>
+    <Provider store={store}>
+      <SnackbarProvider maxSnack={8}>
 
-  return (
-    <StrictMode>
-      <div css={wrap}>
-        {router}
-      </div>
-    </StrictMode>
-  )
+        <NavigationBar/>
+
+        <Router>
+          <Route path="/desktop" component={Desktop} />
+        </Router>
+        
+      </SnackbarProvider>
+    </Provider>
+  </StrictMode>
 }
 
 export default memo(App)
