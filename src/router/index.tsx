@@ -4,8 +4,8 @@ import Loadable from 'react-loadable'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import Loading from '@/components/Loading'
 
-const Home = Loadable({
-  loader: () => import('@/containers/Home'),
+const Desktop = Loadable({
+  loader: () => import('@/containers/Desktop'),
   loading: Loading
 })
 
@@ -18,7 +18,7 @@ const router = (
   <div css={wrap}>
     <Router>
       <Switch>
-        <Route path="/" component={Home} />
+        <Route path="/" component={Desktop} />
       </Switch>
     </Router>
   </div>

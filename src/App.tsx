@@ -1,8 +1,7 @@
 import React, { StrictMode, memo, FC } from 'react'
-import { HashRouter as Router, Route } from "react-router-dom";
 import { Provider } from 'react-redux'
 import store from './store'
-import Desktop from './containers/Desktop'
+import router from './router'
 import { SnackbarProvider } from 'notistack'
 import NavigationBar from './components/NavigationBar'
 
@@ -13,9 +12,7 @@ const App: FC = () => {
 
         <NavigationBar/>
 
-        <Router>
-          <Route path="/desktop" component={Desktop} />
-        </Router>
+        {router}
         
       </SnackbarProvider>
     </Provider>
